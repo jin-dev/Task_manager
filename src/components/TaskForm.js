@@ -46,7 +46,7 @@ const TaskForm = () => {
                 <button type="submit" className="btn clear-btn"
                 onClick={clearTasks}
                 >
-                    Remove
+                    Remove All
                 </button>
             </div>
         </form>

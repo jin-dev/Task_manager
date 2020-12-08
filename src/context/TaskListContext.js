@@ -6,14 +6,15 @@ export const TaskListContext = createContext()
 
 
 const TaskListContextProvider = (props) => {
-    
-    const [tasks, setTasks] = useState([
-        {title: "Read the book", id:1},
-        {title: "Wash the car", id:2},
-        {title: "play my game", id:3},
-        {title: "stay with my own family", id:4}
-    ])
+
+    const initialState = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    const [tasks, setTasks] = useState(initialState);
     const [editItem, setEditItem] = useState(null);
+
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+      }, [tasks])
 
     const addTask = (title) => {
         setTasks([...tasks, {title, id:uuid()}])
